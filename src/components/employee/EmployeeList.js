@@ -5,7 +5,7 @@ export default class EmployeeList  extends Component {
     render() {
         return (
             <article>
-                <h1>Employee List</h1>
+                <h3>Employee List</h3>
                 <section>Jessica Younker</section>
                 <section>Jordan Nelson</section>
                 <section>Zoe LeBlanc</section>
