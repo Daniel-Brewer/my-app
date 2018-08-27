@@ -13,7 +13,7 @@ export default class AnimalList extends Component {
                             <h5 className="card-title">
                                 <img src={dog} className="icon--dog" />
                                 {animal.name}
-                                <a href="http://localhost:3000/animals"
+                                <a href="#"
                                     onClick={() => this.props.deleteAnimal(animal.id)}
                                     className="card-link">Delete</a>
                             </h5>
