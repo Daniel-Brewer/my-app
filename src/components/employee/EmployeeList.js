@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
+import "./Employee.css"
 
-
-export default class EmployeeList  extends Component {
+export default class EmployeeList extends Component {
     render() {
         return (
-            <article>
-                <h3>Employee List</h3>
-                <section>Jessica Younker</section>
-                <section>Jordan Nelson</section>
-                <section>Zoe LeBlanc</section>
-                <section>Blaise Roberts</section>
-            </article>
-        );
+            <div className="employees">
+                <h3>Employees               {
+                    this.props.employees.map(employee =>
+                        <div id={`employee--${employee.id}`} key={employee.id}>
+                            {employee.name}
+                            <a href="http://localhost:3000/employees"
+                                onClick={() => this.props.deleteEmployee(employee.id)}
+                                className="employee-link">Delete</a>
+                        </div>
+                    )
+                }
+                </h3> 
+            </div>
+
+        )
     }
 }
