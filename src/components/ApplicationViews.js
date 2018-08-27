@@ -5,6 +5,10 @@ import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owner/OwnerList'
 import "./applicationView.css"
+import AnimalManager from "./animal/AnimalManager"
+import EmployeeManager from "./employee/EmployeeManager"
+import OwnerManager from "./owner/OwnerManager"
+import LocationManager from "./location/LocationManager"
 
 export default class ApplicationViews extends Component {
     state = {
@@ -17,19 +21,40 @@ export default class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
 
-        fetch("http://localhost:8088/animals")
-            .then(r => r.json())
-            .then(animals => newState.animals = animals)
-            .then(() => fetch("http://localhost:8088/employees")
-                .then(r => r.json()))
-            .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:8088/locations")
-                .then(r => r.json()))
-            .then(locations => newState.locations = locations)
-            .then(() => fetch("http://localhost:8088/owners")
-                .then(r => r.json()))
-            .then(owners => newState.owners = owners)
-            .then(() => this.setState(newState))
+        AnimalManager.getAll().then(allAnimals => {
+            this.setState({
+                animals: allAnimals
+            })
+        })
+        EmployeeManager.getAll().then(allEmployees => {
+            this.setState({
+                employees: allEmployees
+            })
+        })
+        OwnerManager.getAll().then(allOwners => {
+            this.setState({
+                owners: allOwners
+            })
+        })
+        LocationManager.getAll().then(allLocations => {
+            this.setState({
+                locations: allLocations
+            })
+        })
+
+        // fetch("http://localhost:8088/animals")
+        //     .then(r => r.json())
+        //     .then(animals => newState.animals = animals)
+        //     .then(() => fetch("http://localhost:8088/employees")
+        //         .then(r => r.json()))
+        //     .then(employees => newState.employees = employees)
+        //     .then(() => fetch("http://localhost:8088/locations")
+        //         .then(r => r.json()))
+        //     .then(locations => newState.locations = locations)
+        //     .then(() => fetch("http://localhost:8088/owners")
+        //         .then(r => r.json()))
+        //     .then(owners => newState.owners = owners)
+        //     .then(() => this.setState(newState))
     }
 
     deleteAnimal = id => {
