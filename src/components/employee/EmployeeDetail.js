@@ -1,18 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 import "./Employee.css"
-import {Link} from 'react-router-dom'
 
-export default class EmployeeList extends Component {
+
+
+export default class EmployeeDetail extends Component {
     render() {
+        /*
+            Using the route parameter, find the animal that the
+            user clicked on by looking at the `this.props.animals`
+            collection that was passed down from ApplicationViews
+        */
+        const employee = this.props.employees.find(a => a.id === parseInt(this.props.match.params.employeeId)) || {}
+
         return (
-            <section className="employees">
+           <section className="employees">
                 <h3>Employees</h3>
                 {
                     this.props.employees.map(employee =>
                         <div id={`employee--${employee.id}`} key={employee.id}>
                             {employee.name}
                             <br></br>
-                            <Link className="nav-link" to={`/employees/${employee.id}`}>Details</Link>
                             <h4>
                                 <button onClick={() => this.props.deleteEmployee(employee.id)}
                                     className="card-link">Delete</button>
@@ -24,4 +31,3 @@ export default class EmployeeList extends Component {
         )
     }
 }
-
