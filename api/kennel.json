@@ -15,6 +15,14 @@
     {
       "name": "Jill Smith",
       "id": 5
+    },
+    {
+      "name": "Aaron David",
+      "id": 6
+    },
+    {
+      "name": "Ryan Daniel",
+      "id": 7
     }
   ],
   "locations": [
@@ -77,6 +85,10 @@
     {
       "id": 6,
       "name": "Cleo"
+    },
+    {
+      "name": "Ann Collier",
+      "id": 7
     }
   ]
 }
