@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import "./Employee.css"
 import { Link } from 'react-router-dom'
+import "./Employee.css"
 
 export default class EmployeeList extends Component {
     render() {
