@@ -6,7 +6,7 @@ export default class AnimalForm extends Component {
     state = {
         animalName: "",
         breed: "",
-        employee: ""
+        employee: "",
     }
 
     // Update state whenever an input field is edited
@@ -28,7 +28,7 @@ export default class AnimalForm extends Component {
             const animal = {
                 name: this.state.animalName,
                 breed: this.state.breed,
-                employeeId: this.props.employees.find(e => e.name === this.state.employee).id
+                employeeId: this.props.employees.find(e => e.name === this.state.employee).id,
             }
 
             // Create the animal and redirect user to animal list
@@ -65,6 +65,7 @@ export default class AnimalForm extends Component {
                         }
                         </select>
                     </div>
+
                     <button type="submit" onClick={this.constructNewAnimal} className="btn btn-primary">Submit</button>
                 </form>
             </React.Fragment>
