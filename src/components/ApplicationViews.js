@@ -10,6 +10,7 @@ import LocationManager from "../modules/LocationManager"
 import EmployeeList from './employee/EmployeeList'
 import EmployeeDetail from './employee/EmployeeDetail'
 import EmployeeManager from "../modules/EmployeeManager"
+import EmployeeForm from "./employee/EmployeeForm"
 import OwnerList from './owner/OwnerList'
 import OwnerDetail from './owner/OwnerDetail'
 import OwnerManager from "../modules/OwnerManager"
@@ -88,6 +89,11 @@ export default class ApplicationViews extends Component {
     .then(animals => this.setState({
         animals: animals
     }))
+    addEmployee = employee => EmployeeManager.post(employee)
+    .then(() => EmployeeManager.getAll())
+    .then(employees => this.setState({
+        employees: employees
+    }))
 
 
     render() {
@@ -116,8 +122,13 @@ export default class ApplicationViews extends Component {
                             addAnimal={this.addAnimal}
                             employees={this.state.employees} />
                     }} />
+                    <Route path="/employees/new" render={(props) => {
+                        return <EmployeeForm {...props}
+                            addEmployee={this.addEmployee}
+                            employees={this.state.employees} />
+                    }} />
                     <Route exact path="/employees" render={(props) => {
-                        return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                     }} />
                     <Route path="/employees/:employeeId(\d+)" render={(props) => {
                         return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
