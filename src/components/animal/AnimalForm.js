@@ -34,6 +34,7 @@ export default class AnimalForm extends Component {
             // Create the animal and redirect user to animal list
             this.props.addAnimal(animal).then(() => this.props.history.push("/animals"))
         }
+
     }
 
     render() {
@@ -67,6 +68,7 @@ export default class AnimalForm extends Component {
                     </div>
 
                     <button type="submit" onClick={this.constructNewAnimal} className="btn btn-primary">Submit</button>
+                    {/* <button type="submit" onClick={this.editAnimal} className="btn btn-primary">Submit</button> */}
                 </form>
             </React.Fragment>
         )

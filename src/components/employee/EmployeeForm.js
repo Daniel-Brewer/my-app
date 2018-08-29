@@ -15,7 +15,7 @@ export default class EmployeeForm extends Component {
     }
 
     /*
-        Local method for validation, creating animal object, and
+        Local method for validation, creating employee object, and
         invoking the function reference passed from parent component
      */
     constructNewEmployee = evt => {
@@ -23,7 +23,7 @@ export default class EmployeeForm extends Component {
         const employee = {
             name: this.state.name,
         }
-        // Create the animal and redirect user to animal list
+        // Create the employee and redirect user to employee list
         this.props.addEmployee(employee)
         .then(() => this.props.history.push("/employees"))
         
