@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import AnimalDetail from './animal/AnimalDetail'
@@ -16,8 +16,10 @@ import OwnerDetail from './owner/OwnerDetail'
 import OwnerManager from "../modules/OwnerManager"
 import OwnerForm from "./owner/OwnerForm"
 import "./applicationView.css"
+import Login from './Login'
 
 export default class ApplicationViews extends Component {
+    isAuthenticated = () => localStorage.getItem("credentials") !== null
     state = {
         locations: [],
         animals: [],
@@ -103,31 +105,55 @@ export default class ApplicationViews extends Component {
             owners: owners
         }))
 
+    editAnimal = animal => AnimalManager.put(animal)
+        .then(() => AnimalManager.getAll())
+        .then(animals => this.setState({
+            animals: animals
+        }))
+
 
     render() {
         return (
             <React.Fragment>
                 <div className="viewArea">
-                    <Route exact path="/" render={(props) => {
+                    <Route path="/login" component={Login} />
+                    {/* <Route exact path="/" render={(props) => {
                         return <LocationList locations={this.state.locations} />
+                    }} /> */}
+                    <Route exact path="/" render={(props) => {
+                        if (this.isAuthenticated()) {
+                            return <LocationList locations={this.state.locations} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
                     }} />
                     <Route path="/locations/:locationId(\d+)" render={(props) => {
                         return <LocationDetail {...props} deleteLocation={this.deleteLocation} locations={this.state.locations} />
                     }} />
-                    <Route exact path="/animals" render={(props) => {
-                        return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
-                    }} />
                     <Route path="/animals/:animalId(\d+)" render={(props) => {
                         return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                     }} />
-                    <Route exact path="/animals" render={(props) => {
+                    {/* <Route exact path="/animals" render={(props) => {
                         return <AnimalList {...props}
                             deleteAnimal={this.deleteAnimal}
                             animals={this.state.animals} />
+                    }} /> */}
+                    <Route exact path="/animals" render={props => {
+                        if (this.isAuthenticated()) {
+                            return <AnimalList {...props} deleteAnimal={this.deleteAnimal}
+                                animals={this.state.animals} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
                     }} />
                     <Route path="/animals/new" render={(props) => {
                         return <AnimalForm {...props}
                             addAnimal={this.addAnimal}
+                            employees={this.state.employees} />
+                    }} />
+                    <Route path="/animals/edit" render={(props) => {
+                        return <AnimalForm {...props}
+                            editAnimal={this.editAnimal}
                             employees={this.state.employees} />
                     }} />
                     <Route path="/employees/new" render={(props) => {
@@ -135,8 +161,16 @@ export default class ApplicationViews extends Component {
                             addEmployee={this.addEmployee}
                             employees={this.state.employees} />
                     }} />
-                    <Route exact path="/employees" render={(props) => {
+                    {/* <Route exact path="/employees" render={(props) => {
                         return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    }} /> */}
+                    <Route exact path="/employees" render={props => {
+                        if (this.isAuthenticated()) {
+                            return <EmployeeList  {...props} deleteEmployee={this.deleteEmployee}
+                                employees={this.state.employees} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
                     }} />
                     <Route path="/employees/:employeeId(\d+)" render={(props) => {
                         return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
@@ -146,8 +180,16 @@ export default class ApplicationViews extends Component {
                             addOwner={this.addOwner}
                             owners={this.state.owners} />
                     }} />
-                    <Route exact path="/owners" render={(props) => {
+                    {/* <Route exact path="/owners" render={(props) => {
                         return <OwnerList {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                    }} /> */}
+                    <Route exact path="/owners" render={props => {
+                        if (this.isAuthenticated()) {
+                            return <OwnerList {...props} deleteOwner={this.deleteOwner}
+                                owners={this.state.owners} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
                     }} />
                     <Route path="/owners/:ownerId(\d+)" render={(props) => {
                         return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />

@@ -22,5 +22,16 @@ export default Object.create(null, {
             }).then(e => e.json())
         }
     },
+    put: {
+        value: function (editAnimal) {
+            return fetch(`${remoteURL}/animals`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(editAnimal)
+            }).then(e => e.json())
+        }
+    },
 })
 
