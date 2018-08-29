@@ -2,3 +2,23 @@
     display: flex;
     justify-content: space-evenly;
 }
+.icon--employee {
+    width: 30px;
+    height: 30px;
+}
+
+.card--employee {
+    width: 50rem;
+    height: 25rem;
+}
+.card-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-link {
+    margin: 12px 0 0 0;
+    font-size: 0.7em;
+}

@@ -117,9 +117,6 @@ export default class ApplicationViews extends Component {
             <React.Fragment>
                 <div className="viewArea">
                     <Route path="/login" component={Login} />
-                    {/* <Route exact path="/" render={(props) => {
-                        return <LocationList locations={this.state.locations} />
-                    }} /> */}
                     <Route exact path="/" render={(props) => {
                         if (this.isAuthenticated()) {
                             return <LocationList locations={this.state.locations} />
@@ -161,12 +158,11 @@ export default class ApplicationViews extends Component {
                             addEmployee={this.addEmployee}
                             employees={this.state.employees} />
                     }} />
-                    {/* <Route exact path="/employees" render={(props) => {
-                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
-                    }} /> */}
+
                     <Route exact path="/employees" render={props => {
                         if (this.isAuthenticated()) {
-                            return <EmployeeList  {...props} deleteEmployee={this.deleteEmployee}
+                            return <EmployeeList deleteEmployee={this.deleteEmployee} deleteAnimal={this.deleteAnimal}
+                                animals={this.state.animals}
                                 employees={this.state.employees} />
                         } else {
                             return <Redirect to="/login" />

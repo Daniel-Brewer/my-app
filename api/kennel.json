@@ -17,10 +17,6 @@
       "id": 5
     },
     {
-      "name": "Aaron David",
-      "id": 6
-    },
-    {
       "name": "Ryan Daniel",
       "id": 7
     }
@@ -57,12 +53,6 @@
     {
       "id": 6,
       "name": "Checkers"
-    },
-    {
-      "name": "Lily",
-      "breed": "Labrador",
-      "employeeId": 2,
-      "id": 7
     }
   ],
   "owners": [
