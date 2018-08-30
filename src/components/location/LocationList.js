@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import hospital from "./hospital.png";
 
 export default class LocationList extends Component {
     render() {
@@ -9,6 +10,7 @@ export default class LocationList extends Component {
                 {
             this.props.locations.map(location => 
                 <div id={`location--${location.id}`} key={location.id}>
+                <img src={hospital} className="icon--hospital" />
                         {location.name}
                         {location.address}
                         <br></br>
