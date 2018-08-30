@@ -7,6 +7,7 @@ export default class AnimalForm extends Component {
         animalName: "",
         breed: "",
         employee: "",
+        owner: ""
     }
 
     // Update state whenever an input field is edited
@@ -29,12 +30,11 @@ export default class AnimalForm extends Component {
                 name: this.state.animalName,
                 breed: this.state.breed,
                 employeeId: this.props.employees.find(e => e.name === this.state.employee).id,
+                ownerId: this.props.owners.find(e => e.name === this.state.owner).id
             }
-
             // Create the animal and redirect user to animal list
             this.props.addAnimal(animal).then(() => this.props.history.push("/animals"))
         }
-
     }
 
     render() {
@@ -44,31 +44,39 @@ export default class AnimalForm extends Component {
                     <div className="form-group">
                         <label htmlFor="animalName">Animal name</label>
                         <input type="text" required="true"
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="animalName"
-                               placeholder="Animal name" />
+                            className="form-control"
+                            onChange={this.handleFieldChange}
+                            id="animalName"
+                            placeholder="Animal name" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="breed">Breed</label>
                         <input type="text" required="true"
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="breed" placeholder="Breed" />
+                            className="form-control"
+                            onChange={this.handleFieldChange}
+                            id="breed" placeholder="Breed" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
                         <select defaultValue="" name="employee" id="employee"
-                                onChange={this.handleFieldChange}>
+                            onChange={this.handleFieldChange}>
                             <option value="">Select an employee</option>
-                        {
-                            this.props.employees.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
-                        }
+                            {
+                                this.props.employees.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
+                            }
                         </select>
                     </div>
-
+                    <div className="form-group">
+                        <label htmlFor="owner">Assign to owner</label>
+                        <select defaultValue="" name="owner" id="owner"
+                            onChange={this.handleFieldChange}>
+                            <option value="">Select an owner</option>
+                            {
+                                this.props.owners.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
+                            }
+                        </select>
+                    </div>
                     <button type="submit" onClick={this.constructNewAnimal} className="btn btn-primary">Submit</button>
-                    {/* <button type="submit" onClick={this.editAnimal} className="btn btn-primary">Submit</button> */}
                 </form>
             </React.Fragment>
         )

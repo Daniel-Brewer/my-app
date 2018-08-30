@@ -19,6 +19,10 @@
     {
       "name": "Ryan Daniel",
       "id": 7
+    },
+    {
+      "name": "Aaron Collier",
+      "id": 8
     }
   ],
   "locations": [
@@ -60,6 +64,13 @@
       "employeeId": 4,
       "ownerId": 8,
       "id": 7
+    },
+    {
+      "name": "Sprinkles",
+      "breed": "Cat",
+      "employeeId": 2,
+      "ownerId": 3,
+      "id": 8
     }
   ],
   "owners": [

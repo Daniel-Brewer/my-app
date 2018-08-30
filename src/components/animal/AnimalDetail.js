@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import "./Animal.css"
 import dog from "./DogIcon.png"
 
@@ -10,8 +11,7 @@ export default class AnimalDetail extends Component {
             user clicked on by looking at the `this.props.animals`
             collection that was passed down from ApplicationViews
         */
-        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
-
+        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
         return (
             <section className="animal">
                 <div key={animal.id} className="card">
@@ -21,13 +21,11 @@ export default class AnimalDetail extends Component {
                             {animal.name}
                         </h4>
                         <h6 className="card-title">{animal.breed}</h6>
-                        <button onClick={() => this.props.deleteAnimal(animal.id)
-                            .then(() => this.props.history.push("/animals"))}
+                        <Link className="nav-link" to={`/animals/edit/${animal.id}`}>edit</Link>
+                        <button
+                            onClick={() => this.props.deleteAnimal(animal.id)
+                                .then(() => this.props.history.push("/animals"))}
                             className="card-link">Delete</button>
-                        <button onClick={() => this.props.editAnimal(animal.id)
-                            .then(() => this.props.history.push("/animals"))}
-                            className="card-link">Edit Animal Info</button>
-
                     </div>
                 </div>
             </section>
