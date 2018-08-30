@@ -22,7 +22,7 @@ class EmployeeList extends Component {
                     <div key={employee.id} className="card">
                         <div className="card-body">
                             <h5 className="card-title">
-                                <img src={person} className="icon--person" />
+                                <img src={person} alt="person" className="icon--person" />
                                 {employee.name}
                                 <Link className="nav-link" to={`/employees/${employee.id}`}>Details</Link>
                                 <button

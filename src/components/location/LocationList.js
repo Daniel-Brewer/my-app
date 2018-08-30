@@ -10,7 +10,7 @@ export default class LocationList extends Component {
                 {
             this.props.locations.map(location => 
                 <div id={`location--${location.id}`} key={location.id}>
-                <img src={hospital} className="icon--hospital" />
+                <img src={hospital} alt="hospital" className="icon--hospital" />
                         {location.name}
                         {location.address}
                         <br></br>

@@ -4,7 +4,9 @@ import "./Owner.css"
 export default class OwnerForm extends Component {
     // Set initial state
     state = {
+        ownerId:"",
         ownerName: "",
+        ownerPhone:""
     }
 
     // Update state whenever an input field is edited

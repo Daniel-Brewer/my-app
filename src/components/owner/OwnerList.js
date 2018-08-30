@@ -22,12 +22,12 @@ class OwnerList extends Component {
                     <div key={owner.id} className="card">
                         <div className="card-body">
                             <div className="card-title">
-                                <img src={person} className="icon--person" />
+                                <img src={person} alt="person" className="icon--person" />
                                 {owner.name}
                                 <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
-                                <a href="#"
+                                <button
                                     onClick={() => this.props.deleteOwner(owner.id)}
-                                    className="card-link">Delete</a>
+                                    className="card-link">Delete</button>
                             </div>
                         </div>
                     </div>

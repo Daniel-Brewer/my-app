@@ -10,7 +10,7 @@ export default class LocationDetail extends Component {
             user clicked on by looking at the `this.props.animals`
             collection that was passed down from ApplicationViews
         */
-        const location = this.props.locations.find(a => a.id === parseInt(this.props.match.params.locationId)) || {}
+        // const location = this.props.locations.find(a => a.id === parseInt(this.props.match.params.locationId)) || {}
 
         return (
            <section className="locations">
