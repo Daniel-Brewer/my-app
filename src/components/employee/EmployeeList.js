@@ -1,41 +1,45 @@
-import React, { Component } from "react"
-import person from "./person.png"
+import React, { Component } from 'react';
+import { Link } from "react-router-dom"
 import "./Employee.css"
-import AnimalCard from "../animal/AnimalCard"
+import person from "./person.png";
 
-
-export default class EmployeeList extends Component {
-    render () {
+class EmployeeList extends Component {
+    render() {
         return (
+<React.Fragment>
+                <div className="employeeButton">
+                    <button type="button"
+                            className="btn btn-success"
+                            onClick={() => {
+                                this.props.history.push("/employees/new")}
+                            }>
+                        Add New employee
+                    </button>
+                </div>
             <section className="employees">
             {
                 this.props.employees.map(employee =>
-                    <div key={employee.id} className="card card--employee">
+                    <div key={employee.id} className="card">
                         <div className="card-body">
-                            <h4 className="card-title">
-                                <img src={person} className="icon--employee" />
+                            <h5 className="card-title">
+                                <img src={person} className="icon--person" />
                                 {employee.name}
-                            <button
-                                onClick={() => this.props.deleteEmployee(employee.id)}
-                                className="card-link">Delete</button>
-                            </h4>
-
-                            <h6 className="card-subtitle mb-2 text-muted">Caretaker For</h6>
-                            <div className="animals--caretaker">
-                            {
-                                this.props.animals
-                                    .filter(anml => anml.employeeId === employee.id)
-                                    .map(anml => <AnimalCard key={anml.id} animal={anml} {...this.props} />)
-                            }
-                            </div>
-
+                                <Link className="nav-link" to={`/employees/${employee.id}`}>Details</Link>
+                                <button
+                                    onClick={() => this.props.deleteEmployee(employee.id)}
+                                    className="card-link">Delete</button>
+                            </h5>
                         </div>
                     </div>
                 )
             }
             </section>
+        </React.Fragment>
         )
     }
 }
+
+export default EmployeeList
+
 
 
