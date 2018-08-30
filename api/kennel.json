@@ -35,24 +35,32 @@
   ],
   "animals": [
     {
-      "id": 2,
-      "name": "Jack"
+      "name": "Lily",
+      "breed": "Labrador",
+      "employeeId": 2,
+      "ownerId": 1,
+      "id": 7
     },
     {
-      "id": 3,
-      "name": "Angus"
+      "name": "Skittles",
+      "breed": "Cat",
+      "employeeId": 8,
+      "ownerId": 6,
+      "id": 8
     },
     {
-      "id": 4,
-      "name": "Henley"
+      "name": "Pineapple",
+      "breed": "Mutt",
+      "employeeId": 4,
+      "ownerId": 2,
+      "id": 9
     },
     {
-      "id": 5,
-      "name": "Derkins"
-    },
-    {
-      "id": 6,
-      "name": "Checkers"
+      "name": "Finn",
+      "breed": "Boxer",
+      "employeeId": 3,
+      "ownerId": 1,
+      "id": 10
     }
   ],
   "owners": [

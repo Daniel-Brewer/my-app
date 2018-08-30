@@ -12,14 +12,17 @@ export default class AnimalDetail extends Component {
             collection that was passed down from ApplicationViews
         */
         const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
+
+
         return (
             <section className="animal">
                 <div key={animal.id} className="card">
                     <div className="card-body">
                         <h4 className="card-title">
-                            <img src={dog} className="icon--dog" />
+                            <img src={dog} alt="dog" className="icon--dog" />
                             {animal.name}
                         </h4>
+                        {/* <h6>Owned by {animal.owner}</h6> */}
                         <h6 className="card-title">{animal.breed}</h6>
                         <Link className="nav-link" to={`/animals/edit/${animal.id}`}>edit</Link>
                         <button
