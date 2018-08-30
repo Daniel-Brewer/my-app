@@ -13,10 +13,6 @@
       "name": "Blaise Roberts"
     },
     {
-      "name": "Jill Smith",
-      "id": 5
-    },
-    {
       "name": "Ryan Daniel",
       "id": 7
     },
@@ -57,20 +53,6 @@
     {
       "id": 6,
       "name": "Checkers"
-    },
-    {
-      "name": "Lily Belle",
-      "breed": "Labrador Retriever",
-      "employeeId": 4,
-      "ownerId": 8,
-      "id": 7
-    },
-    {
-      "name": "Sprinkles",
-      "breed": "Cat",
-      "employeeId": 2,
-      "ownerId": 3,
-      "id": 8
     }
   ],
   "owners": [
@@ -93,14 +75,6 @@
     {
       "id": 6,
       "name": "Cleo"
-    },
-    {
-      "name": "Ann Collier",
-      "id": 7
-    },
-    {
-      "name": "Dan Stevens",
-      "id": 8
     }
   ]
 }

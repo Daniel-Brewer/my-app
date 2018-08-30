@@ -16,6 +16,7 @@ import APIManager from '../modules/APIManager'
 import "./applicationView.css"
 import Login from './Login'
 
+// check for login
 class ApplicationViews extends Component {
     isAuthenticated = () => localStorage.getItem("credentials") !== null
     state = {
